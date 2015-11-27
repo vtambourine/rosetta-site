@@ -156,6 +156,7 @@ gulp.task('clean', cb => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 // Watch files for changes & reload
 gulp.task('serve', ['scripts', 'styles'], () => {
   browserSync({
+    open: false,
     notify: false,
     // Customize the Browsersync console logging prefix
     logPrefix: 'WSK',
@@ -178,6 +179,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], () =>
   browserSync({
+    open: false,
     notify: false,
     logPrefix: 'WSK',
     // Allow scroll syncing across breakpoints

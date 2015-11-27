@@ -1,0 +1,231 @@
+// Colors
+
+$sepia: #f9f2e2;
+$sepia-text: #533217;
+$yellow: #f9e455;
+$blue: #a2cce2;
+
+// Skeleton media queries
+
+$mobile-width: 400px;
+$phablet-width: 550px;
+$tablet-width: 750px;
+$desktop-width: 1000px;
+$desktop-hd-width: 1200px;
+
+// Media queries mixins
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+// Base styles
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $yellow;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background-color: $sepia;
+  font-family: 'Helvetica', 'Arial', serif;
+  line-height: 1.6;
+}
+
+h2 {
+  color: $sepia-text;
+}
+
+.button-primary {
+  background-color: $blue;
+  border-color: $blue;
+}
+
+.button {
+  transition: all 0.2s;
+}
+
+// Page styles
+
+.page {
+  // height: 100%;
+}
+
+.section {
+  padding: 8rem 0 7rem;
+  text-align: center;
+
+  @include tablet {
+    padding: 15rem 0 14rem;
+  }
+
+  @include desktop {
+    padding: 20rem 0 19rem;
+  }
+}
+
+.hero {
+  padding: 8rem 0 7rem;
+  // height: 100%;
+  // min-height: 400px;
+  text-align: center;
+
+  @include tablet {
+    padding: 14rem 0 19rem;
+  }
+
+  & header {
+    margin-bottom: 3rem;
+  }
+
+  & hr {
+    height: 3rem;
+    border: none;
+    background: url('/images/book.svg') center no-repeat;
+    background-size: contain;
+  }
+
+  &-heading {
+    font-family: 'PT Serif', serif;
+    letter-spacing: 1.8px;
+  }
+
+  &-slogan {
+    margin-bottom: 3.5rem;
+    font-size: 2.2rem;
+    letter-spacing: 0;
+  }
+}
+
+@keyframes fade_in {
+  from {
+    color: $sepia-text;
+  }
+
+  to {
+    color: rgba($sepia-text, 0.5);;
+  }
+}
+
+.cover {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+  font-size: 2.1rem;
+  line-height: 3.3rem;
+  color: $sepia-text;
+
+  @include tablet {
+    margin-top: -10rem;
+  }
+
+  &-frame {
+    display: inline-block;
+    width: 100%;
+
+    &.iphone {
+      @include desktop {
+        display: none;
+      }
+    }
+
+    &.ipad {
+      display: none;
+
+      @include desktop {
+        display: inline-block;
+      }
+    }
+  }
+
+  &-text {
+    font-family: 'PT Serif', serif;
+    overflow: hidden;
+    position: absolute;
+    top: 16%;
+    left: 9%;
+    right: 9%;
+    bottom: 16.8%;
+
+    @include desktop {
+      top: 10%;
+      left: 13%;
+      right: 13%;
+      bottom: 12%;
+    }
+
+    animation: 0.2s linear 2s 1 alternate fade_in;
+    animation-fill-mode: forwards;
+    -webkit-font-smoothing: antialiased;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2rem;
+      background: linear-gradient(to bottom, transparent, $sepia 50%, $sepia);
+    }
+
+    & > em {
+      color: $sepia-text;
+      background-color: $yellow;
+      font-style: normal;
+    }
+  }
+
+  &-page {
+    max-height: 693px;
+    padding: 29% 9%;
+    background: url('/images/iphone.svg') no-repeat;
+    background-size: contain;
+  }
+
+}
+
+.section {
+  background-color: white;
+}
+
+.process {
+  &-step {
+    margin-bottom: 4.5rem;
+
+    & > h4 {
+      color: $sepia-text;
+    }
+  }
+}
+
+.subscribe {
+  background-color: $sepia;
+
+  & > .container {
+    max-width: 450px;
+  }
+}
