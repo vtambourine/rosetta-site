@@ -33,6 +33,10 @@ $desktop-hd-width: 1200px;
   }
 }
 
+@mixin title {
+  font-family: 'PT Serif', serif;
+}
+
 // Base styles
 
 * {
@@ -55,7 +59,11 @@ body {
   line-height: 1.6;
 }
 
-h2 {
+h1, h2, h3 {
+  @include title;
+}
+
+h2, h3 {
   color: $sepia-text;
 }
 
@@ -71,148 +79,99 @@ h2 {
 // Page styles
 
 .page {
-  // height: 100%;
+
+}
+
+.hero {
+  overflow: hidden;
+  height: 600px;
+  text-align: center;
+  background-color: #3B220D;
+  color: $sepia;
+  background: url('/images/cover.jpg') center no-repeat;
+  background-size: cover;
+
+  @include tablet {
+    // padding: 14rem 0 19rem;
+  }
+
+  &-container {
+    position: relative;
+    // padding: 8rem 0 7rem;
+  }
+
+  // & header {
+  //   margin-bottom: 3rem;
+  // }
+
+  &-title {
+    // letter-spacing: 1.8px;
+    display: inline-block;
+    margin-top: 120px;
+    margin-bottom: 3.5rem;
+    padding: 8px 24px;
+    font-size: 3.6em;
+    // line-height: 1rem;
+    background-color: $yellow;
+    color: black;
+  }
+
+  &-slogan {
+    display: block;
+    margin: 0;
+    margin-bottom: 3.5rem;
+    font-size: 3.2rem;
+    line-height: 1.4;
+    color: $sepia;
+    // letter-spacing: 1px;
+    // line-height: 1rem;
+    // background-color: $yellow;
+  }
+
+  &-description {
+    text-align: left;
+    font-size: 1.6rem;
+  }
+
+  &-screenshot {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 461px;
+    height: 654px;
+    background: url('/images/screenshot.png') center no-repeat;
+  }
 }
 
 .section {
-  padding: 8rem 0 7rem;
+  padding: 6rem 0 7rem;
   text-align: center;
+
+  &:nth-child(2n) {
+    background-color: white;
+  }
 
   @include tablet {
     padding: 15rem 0 14rem;
   }
 
   @include desktop {
-    padding: 20rem 0 19rem;
+    padding: 12rem 0 11rem;
   }
-}
-
-.hero {
-  padding: 8rem 0 7rem;
-  // height: 100%;
-  // min-height: 400px;
-  text-align: center;
-
-  @include tablet {
-    padding: 14rem 0 19rem;
-  }
-
-  & header {
-    margin-bottom: 3rem;
-  }
-
-  & hr {
-    height: 3rem;
-    border: none;
-    background: url('/images/book.svg') center no-repeat;
-    background-size: contain;
-  }
-
-  &-heading {
-    font-family: 'PT Serif', serif;
-    letter-spacing: 1.8px;
-  }
-
-  &-slogan {
-    margin-bottom: 3.5rem;
-    font-size: 2.2rem;
-    letter-spacing: 0;
-  }
-}
-
-@keyframes fade_in {
-  from {
-    color: $sepia-text;
-  }
-
-  to {
-    color: rgba($sepia-text, 0.5);;
-  }
-}
-
-.cover {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  text-align: left;
-  font-size: 2.1rem;
-  line-height: 3.3rem;
-  color: $sepia-text;
-
-  @include tablet {
-    margin-top: -10rem;
-  }
-
-  &-frame {
-    display: inline-block;
-    width: 100%;
-
-    &.iphone {
-      @include desktop {
-        display: none;
-      }
-    }
-
-    &.ipad {
-      display: none;
-
-      @include desktop {
-        display: inline-block;
-      }
-    }
-  }
-
-  &-text {
-    font-family: 'PT Serif', serif;
-    overflow: hidden;
-    position: absolute;
-    top: 16%;
-    left: 9%;
-    right: 9%;
-    bottom: 16.8%;
-
-    @include desktop {
-      top: 10%;
-      left: 13%;
-      right: 13%;
-      bottom: 12%;
-    }
-
-    animation: 0.2s linear 2s 1 alternate fade_in;
-    animation-fill-mode: forwards;
-    -webkit-font-smoothing: antialiased;
-
-    &:after {
-      position: absolute;
-      bottom: 0;
-      display: block;
-      content: '';
-      width: 100%;
-      height: 2rem;
-      background: linear-gradient(to bottom, transparent, $sepia 50%, $sepia);
-    }
-
-    & > em {
-      color: $sepia-text;
-      background-color: $yellow;
-      font-style: normal;
-    }
-  }
-
-  &-page {
-    max-height: 693px;
-    padding: 29% 9%;
-    background: url('/images/iphone.svg') no-repeat;
-    background-size: contain;
-  }
-
-}
-
-.section {
-  background-color: white;
 }
 
 .process {
+
+  &-header {
+    @include title;
+    font-size: 2.4rem;
+    line-height: 1.2;
+
+    h4 {
+      font-size: 3.2rem;
+    }
+  }
+
   &-step {
     margin-bottom: 4.5rem;
 
